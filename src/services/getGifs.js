@@ -1,6 +1,7 @@
 const apiKey = "zb1Bq6sxV6YtLorNyzrFzbZru1OZiWJC";
 
 export default function getGifs({ keyword = "apple" } = {}) {
+  //{ keyword = "apple" } = {} utilizaremos el objeto vacio por defecto (={}) y si no le pasamos nada a getGifsen en App.js pues sera apple
   const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=5&offset=0&rating=g&lang=en`;
 
   return fetch(apiURL)
@@ -11,7 +12,7 @@ export default function getGifs({ keyword = "apple" } = {}) {
       // console.log(data.title)
       /*
        const { data = [] } = response;
-       data es la destructuracion de response xq response es un obj que trae dentro data, meta, pagination y para sacar la informacion devemos poner en obj q viene ({}) despues el valor ({data}) despues los que tiene dentro ({data=[]}) en este caso dato contiene un array de objetos --- Y al mismo tiempor de hacer la destructuracion estamos definiendo data como variable const
+       data es la destructuracion de response xq response es un obj que trae dentro data, meta, pagination y para sacar la informacion devemos poner en obj q viene ({}) despues el valor ({data}) y los corchetes ([]) es un valor por defecto por si data vienen undefined 
       */
       if (Array.isArray(data)) {
         const gifs = data.map(image => {

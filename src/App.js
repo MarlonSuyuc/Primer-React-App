@@ -1,12 +1,23 @@
 import React from "react"
 import "./App.css"
 import ListOfGifs from "./components/ListOfGifs";
-
+import {Link, Route } from "wouter";
+// Route: sirbe para que una forma declarativa decir que rutas tiene la aplicacion 
+// Link: sirbe par hacer enlaces q funcionen por el history.push osea q use el history del navegador sin refrescar la pagina: Actualizara el enlace el wouter, el ruter de wouter y cambiara el componente q tenga q renderizar y lo ara sin refrescar la pagina
 export default function App() {
   return (
     <div className="App">
       <section className="App-content">
-        <ListOfGifs keyword='marvel' />
+      <Link to="/gif/colombia">colombia</Link>
+      <Link to="/gif/mexico">mexico</Link>
+      <Link to="/gif/canada">canada</Link>
+
+        <Route
+          component={ListOfGifs}
+          path='/gif/:keyword'
+        />
+
+        {/* <ListOfGifs keyword='marvel' /> */}
         {/* <ListOfGifs /> */}
         {/*
          Al momento de pasarle  keyword='marvel' esa keyword es la que dara como respuesta de la busqueda en la API.
